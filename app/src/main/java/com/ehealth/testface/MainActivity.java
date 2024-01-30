@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FaceDetector detector;
     private TextureView image;
     private ImageView image2;
+    private TextView text;
     private TextureView previewView;
 
     private CameraTaskHelper mCameraTaskHelper;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         image = findViewById(R.id.image);
         image2 = findViewById(R.id.image2);
+        text = findViewById(R.id.text);
         previewView = findViewById(R.id.previewView);
         mCameraTaskHelper = new CameraTaskHelper(MainActivity.this, previewView);
         mCameraTaskHelper.addCallBack(new CameraTaskHelper.CallBack() {
@@ -159,6 +162,13 @@ public class MainActivity extends AppCompatActivity {
                                                 float[] current = detector.getFeature(filePath);
                                                 double v1 = detector.featureCompare(test, current);
                                                 Log.e("rrrrrrrrrrrrrrr", "相似度:" + v1);
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        text.setText("相似度:" + v1);
+                                                    }
+                                                });
+
 
                                             }
 

@@ -57,6 +57,14 @@
     </LinearLayout>
 
 
+    <TextView
+        android:id="@+id/text"
+        android:textSize="16sp"
+        android:textColor="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
 
 
 
